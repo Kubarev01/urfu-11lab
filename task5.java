@@ -2,22 +2,16 @@
 // возвращает новый список, содержащий только те строки, которые содержат
 // заданную подстроку.
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class task5 {
 
     public static List<String> filterBySubstring(List<String> strings, String substring) {
-        List<String> result = new ArrayList<>();
-
-        for (String str : strings) {
-            if (str != null && str.contains(substring)) {
-                result.add(str);
-            }
-        }
-
-        return result;
+        return strings.stream()
+                .filter(str -> str != null && str.contains(substring))
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {

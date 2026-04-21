@@ -3,22 +3,16 @@
 // заданного значения.
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class task10 {
 
     public static List<Integer> filterLessThan(List<Integer> numbers, int maxValue) {
-        List<Integer> result = new ArrayList<>();
-
-        for (Integer number : numbers) {
-            if (number < maxValue) {
-                result.add(number);
-            }
-        }
-
-        return result;
+        return numbers.stream()
+                .filter(number -> number < maxValue)
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {

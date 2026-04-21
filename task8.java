@@ -2,22 +2,16 @@
 // возвращает новый список, содержащий только те числа, которые больше
 // заданного значения.
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class task8 {
 
     public static List<Integer> filterGreaterThan(List<Integer> numbers, int minValue) {
-        List<Integer> result = new ArrayList<>();
-
-        for (Integer number : numbers) {
-            if (number > minValue) {
-                result.add(number);
-            }
-        }
-
-        return result;
+        return numbers.stream()
+                .filter(number -> number > minValue)
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {

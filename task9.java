@@ -2,22 +2,16 @@
 // возвращает новый список, содержащий только те строки, которые содержат
 // только буквы (без цифр и символов).
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class task9 {
 
     public static List<String> filterOnlyLetters(List<String> strings) {
-        List<String> result = new ArrayList<>();
-
-        for (String str : strings) {
-            if (str.matches("[a-zA-Zа-яА-Я]+")) {
-                result.add(str);
-            }
-        }
-
-        return result;
+        return strings.stream()
+                .filter(str -> str != null && str.matches("[a-zA-Zа-яА-Я]+"))
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {

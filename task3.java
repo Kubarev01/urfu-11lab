@@ -2,22 +2,16 @@
 // возвращает новый список, содержащий только те строки, которые начинаются
 // с большой буквы.
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class task3 {
 
     public static List<String> filterUppercase(List<String> strings) {
-        List<String> result = new ArrayList<>();
-
-        for (String str : strings) {
-            if (str != null && !str.isEmpty() && Character.isUpperCase(str.charAt(0))) {
-                result.add(str);
-            }
-        }
-
-        return result;
+        return strings.stream()
+                .filter(str -> str != null && !str.isEmpty() && Character.isUpperCase(str.charAt(0)))
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {

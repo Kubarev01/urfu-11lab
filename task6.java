@@ -2,27 +2,21 @@
 // возвращает новый список, содержащий только те числа, которые делятся на
 // заданное число без остатка.
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class task6 {
 
     public static List<Integer> filterDivisible(List<Integer> numbers, int divisor) {
-        List<Integer> result = new ArrayList<>();
-
-        for (Integer num : numbers) {
-            if (num % divisor == 0) {
-                result.add(num);
-            }
-        }
-
-        return result;
+        return numbers.stream()
+                .filter(number -> number % divisor == 0)
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(3, 5, 8, 10, 12, 15, 20);
-        int divisor = 5;
+        List<Integer> numbers = Arrays.asList(3, 6, 8, 10, 12, 15);
+        int divisor = 3;
 
         List<Integer> result = filterDivisible(numbers, divisor);
 
